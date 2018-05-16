@@ -2,6 +2,7 @@ package cloud.bram.template.security
 
 import cloud.bram.template.domain.User
 import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 /**
@@ -24,6 +25,7 @@ class UserDetailsImpl(val user: User) : UserDetails {
     override fun isAccountNonLocked(): Boolean = false
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority>? {
+        SimpleGrantedAuthority(user.role?.name)
         // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return null
     }

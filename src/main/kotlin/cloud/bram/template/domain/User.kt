@@ -6,10 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class User() {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+class User() : BaseEntity() {
     var email: String? = null
     var password: String? = null
     var role: Role? = null
