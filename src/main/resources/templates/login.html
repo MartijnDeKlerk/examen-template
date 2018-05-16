@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${appname}"></title>
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+</head>
+<body>
+<div class="ui container">
+    <div class="ui centered grid">
+        <div class="ten wide column">
+            <div class="ui segment">
+                <div class="ui header">
+                    <div th:text="${appname}"></div>
+                    <div class="sub header" th:text="${appdescription}">Rijn IJssel's scrum application</div>
+                </div>
+                <div class="ui divider"></div>
+                <div id="login-form">
+                    <div id="failed-message" class="ui error hidden message">
+                        <p>The email and password you entered do not match our records.</p>
+                    </div>
+                    <div id="password-changed-message" class="ui success hidden message">
+                        <p>Your password has been changed, you need to reauthenticate.</p>
+                    </div>
+                    <form class="ui form" action="login" method="post">
+                        <div id="email-group" class="field">
+                            <label for="email-field">Email</label>
+                            <input id="email-field" name="email" placeholder="Email" type="email" required autofocus/>
+                        </div>
+                        <div id="password-group" class="field">
+                            <label for="password-field">Password</label>
+                            <input id="password-field" name="password" placeholder="Password" type="password"/>
+                        </div>
+                        <button class="ui button primary" type="submit">Login</button>
+                        <button class="ui button" type="reset">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="js/semantic.min.js"></script>
+<script async src="js/login.js"></script>
+</body>
+</html>
