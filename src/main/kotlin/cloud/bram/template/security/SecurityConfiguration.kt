@@ -43,6 +43,8 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                 .loginProcessingUrl("/sign-in")
                 .successHandler(authSuccessHandler)
                 .failureUrl("/sign-in?failed")
+
+        http.logout().logoutUrl("/sign-out")
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {

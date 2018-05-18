@@ -3,7 +3,6 @@ package cloud.bram.template.ui
 import cloud.bram.template.domain.Role
 import cloud.bram.template.security.SecurityUtils
 import com.vaadin.navigator.PushStateNavigation
-import com.vaadin.navigator.ViewLeaveAction
 import com.vaadin.server.ErrorHandler
 import com.vaadin.server.VaadinRequest
 import com.vaadin.spring.annotation.SpringUI
@@ -34,11 +33,10 @@ class TemplateUI : UI() {
                     Notification.show("I CLICKED MY DADDY", Notification.Type.TRAY_NOTIFICATION)
                 }),
                 Button("Sign Out", Button.ClickListener {
-                    val logout = ViewLeaveAction {
+                    access {
                         session.session.invalidate()
-                        page.location = URI("/")
+                        page.location = URI("/sign-out")
                     }
-                    access { templateNavigator.runAfterLeaveConfirmation(logout) }
                 })
         )
         errorHandler = ErrorHandler { event ->
