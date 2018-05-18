@@ -1,0 +1,7 @@
+@import "addons";
+@import "template";
+
+.template {
+  @include addons;
+  @include template;
+}

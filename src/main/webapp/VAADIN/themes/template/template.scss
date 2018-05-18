@@ -1,0 +1,8 @@
+$mat-background-color: #303030;
+
+@import "/VAADIN/themes/material/material.scss";
+
+//noinspection SassScssResolvedByNameOnly
+@mixin template() {
+  @include material;
+}
