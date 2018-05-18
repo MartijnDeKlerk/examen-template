@@ -17,17 +17,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     private val publicUrls = arrayOf(
-            "/login",
             "/css/**",
             "/js/**",
-            "/app",
             "/VAADIN/**",
             "/vaadinServlet/**"
     )
 
-    @Autowired
+    @set:Autowired
     @Qualifier("user-details-service")
     lateinit var userDetailsService: UserDetailsService
+    @set:Autowired
+    lateinit var authSuccessHandler: AuthSuccessHandler
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
@@ -36,12 +36,13 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                 .anyRequest().hasAnyAuthority(*Role.getAllRoles())
 
         http.formLogin()
+                .permitAll()
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .successForwardUrl("/app")
-                .failureUrl("/login?failed")
+                .loginPage("/sign-in")
+                .loginProcessingUrl("/sign-in")
+                .successHandler(authSuccessHandler)
+                .failureUrl("/sign-in?failed")
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
