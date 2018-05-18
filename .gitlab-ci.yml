@@ -1,0 +1,5 @@
+image: maven:latest
+
+build-template:
+  script:
+  - mvn clean install
