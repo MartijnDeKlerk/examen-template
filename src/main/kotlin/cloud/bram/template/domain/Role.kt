@@ -1,13 +1,11 @@
 package cloud.bram.template.domain
 
-import javax.persistence.Entity
+class Role {
 
-@Entity
-class Role() : BaseEntity() {
+    companion object {
+        fun getAllRoles(): Array<String> = arrayOf(NORMAL, ADMIN)
 
-    var name: String? = null
-
-    constructor(name: String) : this() {
-        this.name = name
+        const val ADMIN: String = "admin"
+        const val NORMAL: String = "normal"
     }
 }

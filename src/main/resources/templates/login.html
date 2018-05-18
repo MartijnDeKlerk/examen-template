@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <!--/*@thymesVar id="appname" type="java.lang.String"*/-->
     <title th:text="${appname}"></title>
     <link rel="stylesheet" type="text/css" href="css/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
@@ -13,7 +14,9 @@
         <div class="ten wide column">
             <div class="ui segment">
                 <div class="ui header">
+                    <!--/*@thymesVar id="appname" type="java.lang.String"*/-->
                     <div th:text="${appname}"></div>
+                    <!--/*@thymesVar id="appdescription" type="java.lang.String"*/-->
                     <div class="sub header" th:text="${appdescription}">Rijn IJssel's scrum application</div>
                 </div>
                 <div class="ui divider"></div>
