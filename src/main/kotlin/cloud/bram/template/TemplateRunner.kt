@@ -24,7 +24,11 @@ class TemplateRunner {
     @Bean
     fun generateData(): ApplicationRunner {
         return ApplicationRunner {
-            val user = User("bramceulemans@me.com", encoder.encode("secret"), Authority.ADMIN)
+            val user = User(
+                    email = "bramceulemans@me.com",
+                    password = encoder.encode("secret"),
+                    role = Authority.ADMIN
+            )
             userRepository.save(user)
 
             logger.info("Saved ${userRepository.count()} user(s).")

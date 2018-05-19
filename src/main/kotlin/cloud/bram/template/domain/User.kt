@@ -18,12 +18,10 @@ class User() : BaseEntity() {
     @Column(nullable = false)
     var authority: String? = null
 
-    constructor(email: String, password: String) : this() {
+    constructor(email: String, name: String? = "", password: String, role: String) : this() {
         this.email = email
+        this.name = name
         this.password = password
-    }
-
-    constructor(email: String, password: String, role: String) : this(email, password) {
         this.authority = role
     }
 }
