@@ -19,6 +19,6 @@ class LoginController {
         }
         model.addAttribute("appname", appname!!)
         model.addAttribute("appdescription", "Description here")
-        return "login"
+        return "sign-in"
     }
 }
