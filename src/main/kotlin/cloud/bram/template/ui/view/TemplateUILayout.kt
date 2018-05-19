@@ -20,8 +20,8 @@ class TemplateUILayout : Panel(), ViewDisplay {
 
     @set:Autowired
     lateinit var navigator: TemplateNavigator
-    @Value("\${spring.application.name}")
-    var appName: String? = null
+    @set:Value("\${spring.application.name}")
+    lateinit var appName: String
 
     val sideMenu = SideMenu()
 
@@ -37,6 +37,7 @@ class TemplateUILayout : Panel(), ViewDisplay {
         sideMenu.addMenuItem("Settings", VaadinIcons.COG, SideMenu.MenuClickHandler {
             navigator.navigateTo(SettingView::class)
         })
+
         content = sideMenu
         setSizeFull()
     }
