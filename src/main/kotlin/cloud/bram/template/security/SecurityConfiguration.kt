@@ -1,5 +1,8 @@
 package cloud.bram.template.security
 
+import cloud.bram.template.TemplateApplication.Companion.LOGIN_FAILURE_URL
+import cloud.bram.template.TemplateApplication.Companion.LOGIN_URL
+import cloud.bram.template.TemplateApplication.Companion.LOGOUT_URL
 import cloud.bram.template.domain.Role
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
@@ -31,6 +34,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
+
         http.authorizeRequests()
                 .antMatchers(*publicUrls).permitAll()
                 .anyRequest().hasAnyAuthority(*Role.getAllRoles())
@@ -39,12 +43,12 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                 .permitAll()
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .loginPage("/sign-in")
-                .loginProcessingUrl("/sign-in")
+                .loginPage(LOGIN_URL)
+                .loginProcessingUrl(LOGIN_URL)
                 .successHandler(authSuccessHandler)
-                .failureUrl("/sign-in?failed")
+                .failureUrl(LOGIN_FAILURE_URL)
 
-        http.logout().logoutUrl("/sign-out")
+        http.logout().logoutUrl(LOGOUT_URL)
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {

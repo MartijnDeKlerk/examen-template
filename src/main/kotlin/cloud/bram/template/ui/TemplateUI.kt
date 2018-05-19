@@ -1,7 +1,7 @@
 package cloud.bram.template.ui
 
 import cloud.bram.template.domain.Role
-import cloud.bram.template.ui.view.TemplateUILayout
+import cloud.bram.template.ui.view.TemplateLayout
 import cloud.bram.template.ui.view.dashboard.DashboardView
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Viewport
@@ -26,7 +26,7 @@ class TemplateUI : UI() {
     @set:Autowired
     lateinit var navigator: TemplateNavigator
     @set:Autowired
-    lateinit var layout: TemplateUILayout
+    lateinit var layout: TemplateLayout
 
     companion object {
         val logger: Logger = LoggerFactory.getLogger(TemplateUI::class.java)
@@ -41,7 +41,7 @@ class TemplateUI : UI() {
         navigator = navigator
         content = layout
 
-        navigator.navigateTo(DashboardView::class)
+        navigator.navigateToDefaultView()
 
         errorHandler = ErrorHandler { event ->
             val throwable = event.throwable
@@ -53,8 +53,10 @@ class TemplateUI : UI() {
     /**
      * Log information for a request.
      */
-    fun logRequestInformation(request: VaadinRequest) {
-        logger.info("UI Initialization:")
-        logger.info("| Secure: {}", if (request.isSecure) "Yes" else "No")
+    private fun logRequestInformation(request: VaadinRequest) {
+        logger.run {
+            info("UI Initialization:")
+            info("| Secure: {}", if (request.isSecure) "Yes" else "No")
+        }
     }
 }

@@ -1,5 +1,6 @@
 package cloud.bram.template.ui.view
 
+import cloud.bram.template.TemplateApplication.Companion.LOGOUT_URL
 import cloud.bram.template.security.SecurityUtils
 import cloud.bram.template.ui.TemplateNavigator
 import cloud.bram.template.ui.view.dashboard.DashboardView
@@ -18,7 +19,7 @@ import javax.annotation.PostConstruct
 import kotlin.reflect.KClass
 
 @SpringViewDisplay
-class TemplateUILayout : Panel(), ViewDisplay {
+class TemplateLayout : Panel(), ViewDisplay {
 
     @set:Autowired
     lateinit var navigator: TemplateNavigator
@@ -32,9 +33,11 @@ class TemplateUILayout : Panel(), ViewDisplay {
      */
     @PostConstruct
     fun init() {
-        sideMenu.setMenuCaption(appName)
-        sideMenu.setUserName(SecurityUtils.getEmail())
-        sideMenu.addUserMenuItem("Logout", VaadinIcons.SIGN_OUT, logout)
+        sideMenu.run {
+            setMenuCaption(appName)
+            setUserName(SecurityUtils.getEmail())
+            addUserMenuItem("Logout", VaadinIcons.SIGN_OUT, logout)
+        }
 
         addMenuItem("Dashboard", VaadinIcons.DASHBOARD, DashboardView::class)
         addMenuItem("Settings", VaadinIcons.COG, SettingView::class)
@@ -66,7 +69,7 @@ class TemplateUILayout : Panel(), ViewDisplay {
     private val logout = SideMenu.MenuClickHandler {
         ui.access {
             session.session.invalidate()
-            ui.page.location = URI("/sign-out")
+            ui.page.location = URI(LOGOUT_URL)
         }
     }
 }
