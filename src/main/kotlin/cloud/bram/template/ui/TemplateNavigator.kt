@@ -12,6 +12,9 @@ import kotlin.reflect.KClass
 @Component
 class TemplateNavigator : SpringNavigator() {
 
+    /**
+     * Get the view name for a view class.
+     */
     fun getViewName(view: Class<out View>): String? {
         val annotation: SpringView = view.getAnnotation(SpringView::class.java)
         return Conventions.deriveMappingForView(view, annotation)
@@ -22,10 +25,5 @@ class TemplateNavigator : SpringNavigator() {
      */
     fun navigateTo(view: Class<out View>) = navigateTo(getViewName(view))
 
-    /**
-     * Navigate to a kotlin class view.
-     */
-    fun navigateTo(kotlinClass: KClass<out View>) {
-        navigateTo(kotlinClass.java)
-    }
+    fun navigateTo(view: KClass<out View>) = navigateTo(view.java)
 }
