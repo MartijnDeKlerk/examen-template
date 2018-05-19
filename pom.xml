@@ -58,6 +58,11 @@
             <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.vaadin.teemusa</groupId>
+            <artifactId>sidemenu</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.appreciated</groupId>
             <artifactId>material</artifactId>
             <version>1.1.8</version>
