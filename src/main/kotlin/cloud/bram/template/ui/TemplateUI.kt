@@ -1,6 +1,6 @@
 package cloud.bram.template.ui
 
-import cloud.bram.template.domain.Role
+import cloud.bram.template.domain.Authority
 import cloud.bram.template.ui.view.TemplateLayout
 import cloud.bram.template.ui.view.dashboard.DashboardView
 import com.vaadin.annotations.Theme
@@ -16,10 +16,10 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.access.annotation.Secured
 
-@SpringUI(path = "/app")
 @Theme("template")
 @PushStateNavigation
-@Secured(Role.NORMAL, Role.ADMIN)
+@SpringUI(path = "/app")
+@Secured(Authority.NORMAL, Authority.ADMIN)
 @Viewport("width=device-width,initial-scale=1.0,user-scalable=no")
 class TemplateUI : UI() {
 
@@ -44,9 +44,10 @@ class TemplateUI : UI() {
         navigator.navigateToDefaultView()
 
         errorHandler = ErrorHandler { event ->
-            val throwable = event.throwable
-            Notification.show(throwable.message, Notification.Type.ERROR_MESSAGE)
-            logger.error(throwable.message, throwable)
+            with(event.throwable) {
+                Notification.show(message, Notification.Type.ERROR_MESSAGE)
+                logger.error(message, this)
+            }
         }
     }
 
@@ -57,6 +58,7 @@ class TemplateUI : UI() {
         logger.run {
             info("UI Initialization:")
             info("| Secure: {}", if (request.isSecure) "Yes" else "No")
+            info("| Browser: {}", page.webBrowser.browserApplication)
         }
     }
 }

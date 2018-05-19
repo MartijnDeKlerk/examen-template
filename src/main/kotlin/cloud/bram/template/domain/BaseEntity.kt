@@ -37,5 +37,5 @@ open class BaseEntity {
         }
     }
 
-    fun isNew(): Boolean = id == 0L
+    fun isNew() = id == 0L
 }

@@ -1,6 +1,6 @@
 package cloud.bram.template.ui
 
-import cloud.bram.template.domain.Role
+import cloud.bram.template.domain.Authority
 import cloud.bram.template.security.SecurityUtils
 import cloud.bram.template.ui.view.dashboard.DashboardView
 import cloud.bram.template.ui.view.dashboard.SettingView
@@ -41,8 +41,8 @@ class TemplateNavigator : SpringNavigator() {
 
         val role = SecurityUtils.getRole()
         when (role) {
-            Role.ADMIN -> navigateTo(SettingView::class)
-            Role.NORMAL -> navigateTo(DashboardView::class)
+            Authority.ADMIN -> navigateTo(SettingView::class)
+            Authority.NORMAL -> navigateTo(DashboardView::class)
             else -> navigateTo(DashboardView::class)
         }
     }

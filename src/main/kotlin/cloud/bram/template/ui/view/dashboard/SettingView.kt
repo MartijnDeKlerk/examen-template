@@ -24,7 +24,7 @@ class SettingView : VerticalLayout(), View {
         grid.addColumn(User::id)
         grid.addColumn(User::uuid)
         grid.addColumn(User::email)
-        grid.addColumn(User::role)
+        grid.addColumn(User::authority)
         grid.addColumn(User::createdAt)
         grid.addComponentColumn { user ->
             val editButton = Button(VaadinIcons.EDIT, Button.ClickListener {

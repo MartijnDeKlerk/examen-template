@@ -1,6 +1,6 @@
 package cloud.bram.template
 
-import cloud.bram.template.domain.Role
+import cloud.bram.template.domain.Authority
 import cloud.bram.template.domain.User
 import cloud.bram.template.domain.repository.UserRepository
 import org.slf4j.Logger
@@ -24,7 +24,7 @@ class TemplateRunner {
     @Bean
     fun generateData(): ApplicationRunner {
         return ApplicationRunner {
-            val user = User("bramceulemans@me.com", encoder.encode("secret"), Role.ADMIN)
+            val user = User("bramceulemans@me.com", encoder.encode("secret"), Authority.ADMIN)
             userRepository.save(user)
 
             logger.info("Saved ${userRepository.count()} user(s).")

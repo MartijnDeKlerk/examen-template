@@ -26,6 +26,6 @@ class UserDetailsImpl(val user: User) : UserDetails {
     override fun isAccountNonLocked(): Boolean = true
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority>? {
-        return Collections.singleton(SimpleGrantedAuthority(user.role))
+        return Collections.singleton(SimpleGrantedAuthority(user.authority))
     }
 }

@@ -3,7 +3,7 @@ package cloud.bram.template.security
 import cloud.bram.template.TemplateApplication.Companion.LOGIN_FAILURE_URL
 import cloud.bram.template.TemplateApplication.Companion.LOGIN_URL
 import cloud.bram.template.TemplateApplication.Companion.LOGOUT_URL
-import cloud.bram.template.domain.Role
+import cloud.bram.template.domain.Authority
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
@@ -37,7 +37,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
         http.authorizeRequests()
                 .antMatchers(*publicUrls).permitAll()
-                .anyRequest().hasAnyAuthority(*Role.getAllRoles())
+                .anyRequest().hasAnyAuthority(*Authority.getAll())
 
         http.formLogin()
                 .permitAll()

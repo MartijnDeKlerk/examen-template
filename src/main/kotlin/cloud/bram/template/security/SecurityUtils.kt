@@ -22,6 +22,6 @@ class SecurityUtils private constructor() {
 
         fun getEmail(): String? = getUser()?.email
 
-        fun getRole(): String? = getUser()?.role
+        fun getRole(): String? = getUser()?.authority
     }
 }

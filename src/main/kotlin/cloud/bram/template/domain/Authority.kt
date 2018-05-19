@@ -1,9 +1,9 @@
 package cloud.bram.template.domain
 
-class Role {
+class Authority {
 
     companion object {
-        fun getAllRoles(): Array<String> = arrayOf(NORMAL, ADMIN)
+        fun getAll(): Array<String> = arrayOf(NORMAL, ADMIN)
 
         const val ADMIN: String = "admin"
         const val NORMAL: String = "normal"
