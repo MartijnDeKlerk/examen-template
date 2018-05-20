@@ -3,7 +3,7 @@ package cloud.bram.template.ui
 import cloud.bram.template.domain.Authority
 import cloud.bram.template.security.SecurityUtils
 import cloud.bram.template.ui.view.dashboard.DashboardView
-import cloud.bram.template.ui.view.dashboard.SettingView
+import cloud.bram.template.ui.view.dashboard.UserView
 import com.vaadin.navigator.View
 import com.vaadin.spring.annotation.SpringView
 import com.vaadin.spring.annotation.UIScope
@@ -41,7 +41,7 @@ class TemplateNavigator : SpringNavigator() {
 
         val role = SecurityUtils.getRole()
         when (role) {
-            Authority.ADMIN -> navigateTo(SettingView::class)
+            Authority.ADMIN -> navigateTo(UserView::class)
             Authority.NORMAL -> navigateTo(DashboardView::class)
             else -> navigateTo(DashboardView::class)
         }

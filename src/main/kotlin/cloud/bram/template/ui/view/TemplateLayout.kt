@@ -4,7 +4,7 @@ import cloud.bram.template.TemplateApplication.Companion.LOGOUT_URL
 import cloud.bram.template.security.SecurityUtils
 import cloud.bram.template.ui.TemplateNavigator
 import cloud.bram.template.ui.view.dashboard.DashboardView
-import cloud.bram.template.ui.view.dashboard.SettingView
+import cloud.bram.template.ui.view.dashboard.UserView
 import com.vaadin.icons.VaadinIcons
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewDisplay
@@ -40,7 +40,7 @@ class TemplateLayout : Panel(), ViewDisplay {
         }
 
         addMenuItem("Dashboard", VaadinIcons.DASHBOARD, DashboardView::class)
-        addMenuItem("Settings", VaadinIcons.COG, SettingView::class)
+        addMenuItem("Users", VaadinIcons.USERS, UserView::class)
 
         content = sideMenu
         setSizeFull()
