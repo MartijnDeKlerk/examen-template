@@ -37,7 +37,6 @@ class UserView : VerticalLayout(), View {
 
     private fun updateGrid(grid: Grid<User>) {
         grid.setItems(userRepository.findAll())
-
     }
 
     private fun buildGrid(): Grid<User> {
