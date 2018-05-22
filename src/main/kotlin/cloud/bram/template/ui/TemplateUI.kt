@@ -1,8 +1,8 @@
 package cloud.bram.template.ui
 
+import cloud.bram.template.TemplateApplication.Companion.APP_URL
 import cloud.bram.template.domain.Authority
 import cloud.bram.template.ui.view.TemplateLayout
-import cloud.bram.template.ui.view.dashboard.DashboardView
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Viewport
 import com.vaadin.navigator.PushStateNavigation
@@ -18,7 +18,7 @@ import org.springframework.security.access.annotation.Secured
 
 @Theme("template")
 @PushStateNavigation
-@SpringUI(path = "/app")
+@SpringUI(path = APP_URL)
 @Secured(Authority.NORMAL, Authority.ADMIN)
 @Viewport("width=device-width,initial-scale=1.0,user-scalable=no")
 class TemplateUI : UI() {

@@ -1,5 +1,6 @@
 package cloud.bram.template.security
 
+import cloud.bram.template.TemplateApplication.Companion.APP_URL
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler
 import org.springframework.stereotype.Component
@@ -15,6 +16,6 @@ class AuthSuccessHandler : AuthenticationSuccessHandler {
             request: HttpServletRequest?,
             response: HttpServletResponse?,
             authentication: Authentication?) {
-        response?.sendRedirect("/app")
+        response?.sendRedirect(APP_URL)
     }
 }
