@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  tomcat:
+    container_name: tomcat
+    build:
+      context: .
+      dockerfile: docker/tomcat/Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/template
+      - SPRING_DATASOURCE_USERNAME=template
+      - SPRING_DATASOURCE_PASSWORD=secret
+      - SPRING_JPA_HIBERNATE.DDL-AUTO=update
+    networks:
+      - template
+    ports:
+      - 8080:8080
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=template
+      - MYSQL_PASSWORD=secret
+    networks:
+      - template
+    ports:
+      - 3309:3306
+
+networks:
+  template:
