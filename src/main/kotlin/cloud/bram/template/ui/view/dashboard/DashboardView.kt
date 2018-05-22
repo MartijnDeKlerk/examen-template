@@ -13,7 +13,7 @@ class DashboardView : VerticalLayout(), View {
     @PostConstruct
     fun init() {
         val label = Label("Dashboard View")
-        label.addStyleNames(MaterialTheme.LABEL_H1, MaterialTheme.LABEL_COLORED)
+        label.addStyleNames(MaterialTheme.LABEL_H1)
         addComponent(label)
     }
 }
