@@ -10,7 +10,6 @@ import com.vaadin.ui.Button
 import com.vaadin.ui.Grid
 import com.vaadin.ui.Label
 import com.vaadin.ui.VerticalLayout
-import com.vaadin.ui.renderers.DateRenderer
 import org.springframework.beans.factory.annotation.Autowired
 import org.vaadin.viritin.form.AbstractForm
 import javax.annotation.PostConstruct
