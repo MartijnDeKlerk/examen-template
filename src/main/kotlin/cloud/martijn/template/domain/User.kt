@@ -1,8 +1,7 @@
 package cloud.martijn.template.domain
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
+
 
 @Entity
 @Table(name = "users")
@@ -24,4 +23,7 @@ class User() : BaseEntity() {
         this.password = password
         this.authority = role
     }
+
+    @OneToOne(cascade = [CascadeType.ALL], mappedBy = "user")
+    private val customer: Customer? = null
 }
