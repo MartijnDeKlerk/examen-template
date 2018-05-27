@@ -1,0 +1,22 @@
+package cloud.martijn.template.security
+
+import cloud.martijn.template.domain.repository.UserRepository
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.stereotype.Component
+
+@Component("user-details-service")
+class UserDetailsServiceImpl : UserDetailsService {
+
+    @Autowired
+    lateinit var userRepository: UserRepository
+
+    @Throws(UsernameNotFoundException::class)
+    override fun loadUserByUsername(username: String): UserDetails? {
+        val user = userRepository.findByEmail(username) ?: throw UsernameNotFoundException("User $username not found.")
+        return UserDetailsImpl(user)
+    }
+
+}

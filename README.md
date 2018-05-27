@@ -18,7 +18,7 @@ Edit the `/etc/ansible/hosts` file and add the IP of the implementation VM.
 all:
   hosts:
     192.168.120.130:
-      ansible_user: bram
+      ansible_user: martijn
       ansible_python_interpreter: /usr/bin/python3
 ```
 
