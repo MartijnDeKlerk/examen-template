@@ -30,7 +30,13 @@ class TemplateRunner {
                         password = encoder.encode("poep"),
                         role = Authority.ADMIN
                 )
+                val user1 = User(
+                        email = "ruben@gmail.com",
+                        password = encoder.encode("poep"),
+                        role = Authority.NORMAL
+                )
                 userRepository.save(user)
+                userRepository.save(user1)
 
                 logger.info("Saved ${userRepository.count()} user(s).")
                 for (singleUser in userRepository.findAll()) {
